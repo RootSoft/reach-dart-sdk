@@ -1,0 +1,17 @@
+name: reach
+description: A frontend RPC client library for building decentralized applications with Reach
+version: 1.0.0
+homepage: https://reach.sh/
+repository: https://github.com/RootSoft/reach-dart-sdk
+issue_tracker: https://github.com/RootSoft/reach-dart-sdk/issues
+
+environment:
+  sdk: ">=2.14.0 <3.0.0"
+
+dependencies:
+  # DIO HTTP
+  dio: ^4.0.0
+
+dev_dependencies:
+  # Testing framework
+  test: ^1.16.5
