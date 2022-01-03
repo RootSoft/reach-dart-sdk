@@ -13,16 +13,11 @@ void main() async {
     host: '0.0.0.0',
     port: 3000,
     verify: false,
+    timeout: 15,
     onSignTransaction: (transaction) async {
       return await wallet.signTransaction(transaction);
     },
   );
-
-  try {
-    final provider = await reach.setProvider({});
-  } catch (ex) {
-    print(ex);
-  }
 
   final aliceAcc = await reach.newTestAccount(balance: 10);
   final bobAcc = await reach.newTestAccount(balance: 10);

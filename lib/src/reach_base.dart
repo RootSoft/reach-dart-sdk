@@ -130,7 +130,6 @@ class Reach {
     unawaited(Future.doWhile(() async {
       try {
         final r = await p;
-        print(r);
         switch (r['t']) {
           case 'Done':
             c.complete(r['ans']);
@@ -201,7 +200,7 @@ class Reach {
   /// Typically, the deployer of a contract will not provide info, while users
   /// of a contract will.
   /// Returns a Reach contract handle with access to the account.
-  Future<String> attach(String account, String contract) async {
+  Future<String> attach(String account, dynamic contract) async {
     final ctc = await rpc('/acc/attach', [account, contract]);
     return ctc;
   }
