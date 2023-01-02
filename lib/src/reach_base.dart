@@ -50,6 +50,7 @@ class Reach {
     int timeout = 5,
     String key = 'opensesame',
     bool debug = false,
+    bool isWeb = false,
     OnSignTransaction? onSignTransaction,
   }) {
     final options = BaseOptions(
@@ -65,15 +66,13 @@ class Reach {
     final dio = Dio(options);
 
     // TLS validation
-    (dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
-        (HttpClient client) {
-      client.badCertificateCallback =
-          (X509Certificate cert, String host, int port) => !verify;
-      return client;
-    };
-
-    if (!verify) {
-      //print();
+    if (!isWeb) {
+      (dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
+          (HttpClient client) {
+        client.badCertificateCallback =
+            (X509Certificate cert, String host, int port) => !verify;
+        return client;
+      };
     }
 
     if (debug) {
